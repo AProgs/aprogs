@@ -1,0 +1,7 @@
+
+> contall@0.0.0 start /home/alexandre/contralllocal/contall
+> node ./bin/www
+
+websocket server created
+[0mGET / [36m304 [0m10.838 ms - -[0m
+[0mGET /style.css [36m304 [0m3.220 ms - -[0m

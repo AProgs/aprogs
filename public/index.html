@@ -1,0 +1,166 @@
+<!--
+Author: Alexandre Paulo
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ContrAll Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Lucid Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design"
+    />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- <link rel="stylesheet" type="text/css" href="http://alexafplinks.comxa.com/files/style.css"> -->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contrall</h1>
+
+        <div id="myDIV" class="signin">
+            <form>
+
+
+                <div class="user">
+                    <img id="user-photo" src="http://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg">
+                    <h1>Olá, <span id="user-name">visitante</span>!</h1>
+                    <p id="user-email"></p>
+                </div>
+
+
+            </form>
+        </div>
+        <div id="myDIVgoogle" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="250" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+    </div>
+    <div class="footer">
+        <p>Copyright &copy; | Design by AP</p>
+    </div>
+
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="640844173644-0jvgjj69q3524jovgqtvgmhrqnfj6m36.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+
+    <a href="/" onclick="signOut();">Sign out</a>
+    <script>
+        function onSignIn(response) {
+            // Conseguindo as informações do seu usuário:
+            var perfil = response.getBasicProfile();
+
+            // Conseguindo o ID do Usuário
+            var userID = perfil.getId();
+
+            // Conseguindo o Nome do Usuário
+            var userName = perfil.getName();
+
+            // Conseguindo o E-mail do Usuário
+            var userEmail = perfil.getEmail();
+
+            // Conseguindo a URL da Foto do Perfil
+            var userPicture = perfil.getImageUrl();
+
+            document.getElementById('user-photo').src = userPicture;
+            document.getElementById('user-name').innerText = userName;
+            document.getElementById('user-email').innerText = userEmail;
+
+            // Recebendo o TOKEN que você usará nas demais requisições à API:
+            var LoR = response.getAuthResponse().id_token;
+            console.log("~ le Tolkien: " + LoR);
+            myFunction(userName, userEmail);
+
+        };
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+
+ 
+            auth2.signOut().then(function() {
+                GoogleAuth.signOut();
+                response.render(index.html);
+                console.log('User signed out.');
+            });
+        }
+
+        function myFunction(name, email) {
+
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("Sign out");
+            a.appendChild(linkText);
+            a.title = "Sign out";
+            a.role = "button";
+            a.className = "btn btn-danger";
+            a.href = "/";
+            a.onclick = signOut();
+
+            //  <a href="/" onclick="signOut();"></a>
+            //    document.body.appendChild(a);
+
+
+            // var x = document.createElement("INPUT");
+            // x.setAttribute("type", "text");
+            //
+            // x.setAttribute("class", "user");
+            // x.setAttribute("value", name);
+            //
+            // var y = document.createElement("INPUT");
+            // y.setAttribute("type", "text");
+            //
+            // y.setAttribute("class", "user");
+            // y.setAttribute("value", email);
+
+            var b = document.createElement('a');
+            var linkText = document.createTextNode("Configuration");
+            b.appendChild(linkText);
+            b.title = "Configuration";
+            b.role = "button";
+            b.className = "btn btn-warning";
+            b.href = "/menu.html";
+
+            var c = document.createElement('a');
+            var linkText = document.createTextNode("Enter in Control");
+            c.appendChild(linkText);
+            c.title = "";
+            c.role = "button";
+            c.className = "btn btn-primary";
+            c.href = "/control.html";
+
+            //button.onclick = window.location = '/menu.html';
+
+            //  b.onclick = "window.location.href='/menu.html'";
+            a.style.marginTop = "15px";
+            c.style.marginRight = "5px";
+            b.style.marginTop = "15px";
+            b.style.marginRight = "5px";
+            c.style.marginTop = "15px";
+          //b.style.marginRight = "20px";
+            document.getElementById("myDIV").appendChild(c);
+            //document.getElementById("myDIV").appendChild(document.createTextNode('   '));
+            document.getElementById("myDIV").appendChild(b);
+
+            document.getElementById("myDIV").appendChild(a);
+
+            var elem = document.getElementById("myDIVgoogle");
+            elem.parentElement.removeChild(elem);
+            //  document.getElementById("myDIV2").appendChild(y);
+        }
+    </script>
+
+
+</body>
+
+</html>
