@@ -38,13 +38,16 @@ router.route("/users")
   let Parser = require('text2json').Parser
   let rawdata = __dirname+'/BMW.TXT';
 
-  let parse = new Parser({hasHeader : true,separator : '|'})
+  let parse = new Parser({hasHeader : true,separator : '|',encoding : 'ascii'})
 
   parse.text2json (rawdata, (err, data) => {
     if (err) {
       console.error (err)
     } else {
-      console.log(data)
+      var strjson = JSON.stringify(data).replace(/ "/g, '"');
+      var strjson = strjson.replace(/" /g, '"');
+      var strjson = strjson.replace(/] \[/g, '][');
+      console.log(strjson);
     }
   })
 
@@ -69,5 +72,4 @@ router.route("/users/:id")
         usersService.deleteUser(req, res)
     });
 
-
-module.exports = router;
+    module.exports = router;
