@@ -1,2 +1,0 @@
-modelo | nserie | memoria | resetmapa
-PRIORA | 609 00 59 00 | PART=95320 | [2E0 33F 54]

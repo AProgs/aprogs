@@ -1,2 +1,0 @@
-modelo | nserie | memoria | resetmapa
-G6 | 152 59 221 (5WY79290) | PART=95160 | [1B0 25F FF]

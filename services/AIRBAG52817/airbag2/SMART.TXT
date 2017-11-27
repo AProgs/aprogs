@@ -1,3 +1,0 @@
-modelo | nserie | memoria | resetmapa
-FORTWO | 000 8767 V003 | PART=24C08 | [0 3F FF]
-ROADSTER | 000 8768 V002 | PART=24C08 | [0 3F FF]
