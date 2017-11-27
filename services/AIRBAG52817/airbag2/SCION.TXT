@@ -1,0 +1,3 @@
+modelo | nserie | memoria | resetmapa
+TC | 89170-21100 | PART=93C56 | [0 E7 00]
+XB | 89170-52860 | PART=93C66 | [6 14 FF] [16 33 FF] [36 A3 FF]
