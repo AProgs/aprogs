@@ -50,16 +50,26 @@ module.exports = {
               //  strjson = strjson.substring(1, strjson.length - 1);
                 console.log(strjson);
                 console.log(rawdata);
-
                 var resetmapsList = JSON.parse(strjson);
-                for(var resetmapsIten in resetmapsList){
-                  new resetmapsServiceDb(resetmapsList[resetmapsIten])
-                  .save()
-                  .catch((err)=>{
-                    console.log(err.message);
-                  });
+                try {
+                  resetmapsServiceDb.insertMany( resetmapsList );
 
+                } catch (e) {
+                  console.log(e);
                 }
+
+
+                // var resetmapsList = JSON.parse(strjson);
+                // var i=0;
+                //
+                // for(var resetmapsIten in resetmapsList){
+                //   new resetmapsServiceDb(resetmapsList[resetmapsIten])
+                //   .save()
+                //   .catch((err)=>{
+                //     console.log(err.message);
+                //   });
+                //
+                // }
               }
 
             })
@@ -123,9 +133,10 @@ module.exports = {
   },
   getAllByNserie : function(req, res){
     var response = {};
-    resetmapsServiceDb.find({
-      'nserie': nserie
-    }, function(err, data) {
+
+    var regex = new RegExp(req.params.nserie, "i")
+   ,   query = { nserie: regex };
+    resetmapsServiceDb.find(query, function(err, data) {
 
       if (err) {
         response = {
