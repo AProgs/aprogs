@@ -1,2 +1,0 @@
-modelo | nserie | memoria | resetmapa
-VUE | 25865978 | PART=95320 | [70A 7C9 FF]
