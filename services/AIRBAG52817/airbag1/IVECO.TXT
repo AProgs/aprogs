@@ -1,0 +1,3 @@
+modelo | nserie | memoria | resetmapa
+IVECO | 504021104 | PART=24LC04 | [10 1F FF]
+IVECO | 504071211 | PART=24LC04 | [10 1F FF]

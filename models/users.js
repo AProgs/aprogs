@@ -1,5 +1,6 @@
 
-var mongoose    =   require("mongoose");
+var mongoose = require('mongoose');
+
 var options = {
   db: { native_parser: true },
   server: { poolSize: 5 },
@@ -16,62 +17,31 @@ var options = {
 //mongodb://<dbuser>:<dbpassword>@ds149711.mlab.com:49711/contralldb
 
 mongoose.connect('mongodb://ds149711.mlab.com:49711/contralldb', options);
-//var master = require("./dataMaster");
-// create schemamaster
-// create schema
-var portSchema = {
-  "name": String,
-  "portNunber": {
+
+
+var UserSchema = new mongoose.Schema({
+  email: {
     type: String,
-    trim: true,
-    index: true,
-    required: true
+    unique: true,
+    required: true,
+    trim: true
   },
-  "write": {
-    type: Boolean,
-    trim: true,
-    index: true,
-    required: true
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
   },
-  "type": String,
-  "isAdc": Boolean,
-  "readTimeMs": String,
-  "timeClose": String,
-  "currentValue":String,
-  "pinDependence": {
-    "portNumber": String,
-    "dependeFromValue1": Boolean
-  }
+  password: {
+    type: String,
+    required: true,
+  },
+  token:{type:String},
+  nServicosPrePagos:{type:Number,required: true,default: 0},
+  activo:{type:Boolean,required: true, default: false}
+});
 
-};
 
-var slaveSchema  = {
-  "masterId" : String,
-  "name" : String,
-  "arduinoType" : String,
-  "portslave":[portSchema]
-};
-// create schema
-var masterSchema  = {
-    "userId" : String,
-    "name" : String,
-    "slaves" : [slaveSchema],
-    "arduinoType" : String,
-    "config":[portSchema]
-};
 
-// create schema
-var dataSchema  = {
-    "masters" : [masterSchema]
-
-};
-var userSchema  = {
-    "userEmail" : {type: String, trim: true, index: true, required: true, unique:true, sparse:true},
-    "userPassword" : String,
-    "masters" : [dataSchema]
-
-};
-// create model if not exists.
-
-//rhc port-forward -a [myapp]
-module.exports = mongoose.model('user',userSchema);
+var User = mongoose.model('User', UserSchema);
+module.exports = User;
