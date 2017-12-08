@@ -16,6 +16,10 @@
     "text2json": "^2.2.3",
     "jsonwebtoken": "latest",
     "crypto-js":"latest",
-    "fs": "latest"
+    "fs": "latest",
+    "path": "latest",
+    "multer": "latest",
+    "binary-file":"latest",
+    "promise":"latest"
   }
 }
